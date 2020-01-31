@@ -32,34 +32,20 @@ spec:
       $setElementOrder/containers:
       - name: podinfod
       containers:
-      - $setElementOrder/ports:
-        - containerPort:9899
-        command:
-        - ./podinfo
-        - --port=9898
-        - --level=info
-        - --random-delay=false
-        - --random-error=false
-        - --backend-url=http://backend:9899/echo
-        livenessProbe:
-          exec:
-            command:
-            - podcli
-            - check
-            - http
-            - localhost:9899/healthz
+      - image: quay.io/stefanprodan/podinfo:1.7.4
         name: podinfod
-        ports:
-        - containerPort: 9899
-          name: http
-          protocol: TCP
-        - $patch: delete
-          containerPort: 9898
-        readinessProbe:
-          exec:
-            command:
-            - podcli
-            - check
-            - http
-            - localhost:9898/readyz
-
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: frontend
+spec:
+  $setElementOrder/ports:
+  - port: 9899
+  ports:
+  - name: http
+    port: 9899
+    protocol: TCP
+    targetPort: http
+  - $patch: delete
+    port: 9898
