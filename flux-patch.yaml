@@ -16,7 +16,11 @@ spec:
       - image: quay.io/stefanprodan/podinfo:1.7.4
         name: podinfod
         ports:
-          - containerPort: 9899
+          - containerPort: 9999
+            name: http
+            protocol: TCP
+          - $patch: delete
+            containerPort: 9898
 ---
 apiVersion: apps/v1
 kind: Deployment
