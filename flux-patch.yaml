@@ -34,18 +34,3 @@ spec:
       containers:
       - image: quay.io/stefanprodan/podinfo:1.7.4
         name: podinfod
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: frontend
-spec:
-  $setElementOrder/ports:
-  - port: 9999
-  ports:
-  - name: http
-    port: 9999
-    protocol: TCP
-    targetPort: http
-  - $patch: delete
-    port: 9898
