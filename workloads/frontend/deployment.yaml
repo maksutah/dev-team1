@@ -27,7 +27,7 @@ spec:
           image: quay.io/stefanprodan/podinfo:1.7.0
           imagePullPolicy: IfNotPresent
           ports:
-            - containerPort: 9898
+            - containerPort: 9899
               name: http
               protocol: TCP
           command:

@@ -8,6 +8,6 @@ spec:
     app: frontend
   ports:
     - name: http
-      port: 9898
+      port: 9899
       protocol: TCP
       targetPort: http
