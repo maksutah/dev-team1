@@ -41,10 +41,10 @@ metadata:
   name: frontend
 spec:
   $setElementOrder/ports:
-  - port: 9899
+  - port: 9999
   ports:
   - name: http
-    port: 9899
+    port: 9999
     protocol: TCP
     targetPort: http
   - $patch: delete
