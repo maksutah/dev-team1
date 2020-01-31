@@ -21,9 +21,11 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  labels:
-    app: frontend
+  annotations:
+    flux.weave.works/automated: "true"
+    flux.weave.works/tag.podinfod: semver:~1.7
   name: frontend
+  namespace: team1
 spec:
   template:
     spec:
